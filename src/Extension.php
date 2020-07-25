@@ -28,6 +28,27 @@ class Extension extends BaseExtension
     protected static $provider;
 
     /**
+     * Get config set in config/admin.php.
+     *
+     * @param string $key
+     * @param null   $default
+     *
+     * @return \Illuminate\Config\Repository|mixed
+     */
+    public static function getConfig($key = null, $default = null)
+    {
+        $name = array_search(get_called_class(), Admin::$extensions);
+
+        if (is_null($key)) {
+            $key = sprintf('admin.extensions.%s', strtolower($name));
+        } else {
+            $key = sprintf('admin.extensions.%s.%s', strtolower($name), $key);
+        }
+
+        return config($key, $default);
+    }
+
+    /**
      * @param string $name
      * @return Map\AbstractMap
      */
@@ -37,8 +58,8 @@ class Extension extends BaseExtension
             return static::$provider;
         }
 
-        $name = Extension::config('default', $name);
-        $args = Extension::config("providers.$name", []);
+        $name = Extension::getConfig('default', $name);
+        $args = Extension::getConfig("providers.$name", []);
 
         return static::$provider = new static::$providers[$name](...array_values($args));
     }

@@ -117,7 +117,7 @@ class Latlong extends Field
 
         $variables = [
             'height'   => $this->height,
-            'provider' => Extension::config('default'),
+            'provider' => Extension::getConfig('default'),
         ];
 
         return parent::render()->with($variables);
