@@ -1,6 +1,6 @@
 <?php
 
-namespace Encore\Admin\Latlong\Map;
+namespace Dcat\Admin\Latlong\Map;
 
 class Yandex extends AbstractMap
 {

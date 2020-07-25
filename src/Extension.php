@@ -1,9 +1,9 @@
 <?php
 
-namespace Encore\Admin\Latlong;
+namespace Dcat\Admin\Latlong;
 
-use Encore\Admin\Admin;
-use Encore\Admin\Extension as BaseExtension;
+use Dcat\Admin\Admin;
+use Dcat\Admin\Extension as BaseExtension;
 
 class Extension extends BaseExtension
 {

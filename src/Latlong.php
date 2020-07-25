@@ -1,8 +1,8 @@
 <?php
 
-namespace Encore\Admin\Latlong;
+namespace Dcat\Admin\Latlong;
 
-use Encore\Admin\Form\Field;
+use Dcat\Admin\Form\Field;
 
 class Latlong extends Field
 {
@@ -21,7 +21,7 @@ class Latlong extends Field
     /**
      * @var string
      */
-    protected $view = 'laravel-admin-latlong::latlong';
+    protected $view = 'dcat-admin-latlong::latlong';
 
     /**
      * Map height.

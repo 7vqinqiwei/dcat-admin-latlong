@@ -1,10 +1,10 @@
 <?php
 
-namespace Encore\Admin\Latlong;
+namespace Dcat\Admin\Latlong;
 
-use Encore\Admin\Admin;
-use Encore\Admin\Form;
-use Encore\Admin\Show;
+use Dcat\Admin\Admin;
+use Dcat\Admin\Form;
+use Dcat\Admin\Show;
 use Illuminate\Support\ServiceProvider;
 
 class LatlongServiceProvider extends ServiceProvider
@@ -14,10 +14,6 @@ class LatlongServiceProvider extends ServiceProvider
      */
     public function boot(Extension $extension)
     {
-        if (! Extension::boot()) {
-            return ;
-        }
-
         $this->loadViewsFrom($extension->views(), 'laravel-admin-latlong');
 
         Admin::booting(function () {
