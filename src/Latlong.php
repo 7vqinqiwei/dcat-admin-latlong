@@ -46,7 +46,9 @@ class Latlong extends Field
      */
     public static function getAssets()
     {
-        return Admin::js(sprintf(Extension::getProvider()->getAssets()[0], env('TENCENT_MAP_API_KEY')));
+        $config = Extension::getConfig();
+        $assets = Extension::getProvider()->getAssets();
+        return Admin::js(sprintf($assets[0], $config['providers'][$config['default']]['api_key']));
     }
 
     /**
