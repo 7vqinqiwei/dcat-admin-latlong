@@ -2,6 +2,7 @@
 
 namespace Dcat\Admin\Latlong;
 
+use Dcat\Admin\Admin;
 use Dcat\Admin\Form\Field;
 
 class Latlong extends Field
@@ -22,6 +23,7 @@ class Latlong extends Field
      * @var string
      */
     protected $view = 'dcat-admin-latlong::latlong';
+
 
     /**
      * Map height.
@@ -44,7 +46,7 @@ class Latlong extends Field
      */
     public static function getAssets()
     {
-        return ['js' => Extension::getProvider()->getAssets()];
+        return Admin::js(sprintf(Extension::getProvider()->getAssets(), env('TENCENT_MAP_API_KEY')));
     }
 
     /**
@@ -59,6 +61,7 @@ class Latlong extends Field
         $this->column['lng'] = (string)$arguments[0];
 
         array_shift($arguments);
+        static::getAssets();
 
         $this->label = $this->formatLabel($arguments);
         $this->id    = $this->formatId($this->column);
@@ -96,7 +99,8 @@ class Latlong extends Field
      * @param $bool
      * @return Latlong
      */
-    public function setAutoPosition($bool) {
+    public function setAutoPosition($bool)
+    {
         $this->autoPosition = $bool;
         return $this;
     }

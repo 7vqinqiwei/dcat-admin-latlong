@@ -14,7 +14,7 @@ class LatlongServiceProvider extends ServiceProvider
      */
     public function boot(Extension $extension)
     {
-        $this->loadViewsFrom($extension->views(), 'laravel-admin-latlong');
+        $this->loadViewsFrom($extension->views(), 'dcat-admin-latlong');
 
         Admin::booting(function () {
             Form::extend('latlong', Latlong::class);

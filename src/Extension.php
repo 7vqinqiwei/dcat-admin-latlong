@@ -7,7 +7,7 @@ use Dcat\Admin\Extension as BaseExtension;
 
 class Extension extends BaseExtension
 {
-    public $name = 'latlong';
+    public static $name = 'latlong';
 
     public $views = __DIR__.'/../resources/views';
 
@@ -37,12 +37,10 @@ class Extension extends BaseExtension
      */
     public static function getConfig($key = null, $default = null)
     {
-        $name = array_search(get_called_class(), Admin::$extensions);
-
         if (is_null($key)) {
-            $key = sprintf('admin.extensions.%s', strtolower($name));
+            $key = sprintf('admin.extensions.%s', static::$name);
         } else {
-            $key = sprintf('admin.extensions.%s.%s', strtolower($name), $key);
+            $key = sprintf('admin.extensions.%s.%s', static::$name, $key);
         }
 
         return config($key, $default);
