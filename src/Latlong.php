@@ -63,7 +63,6 @@ class Latlong extends Field
         $this->column['lng'] = (string)$arguments[0];
 
         array_shift($arguments);
-        static::getAssets();
 
         $this->label = $this->formatLabel($arguments);
         $this->id    = $this->formatId($this->column);
